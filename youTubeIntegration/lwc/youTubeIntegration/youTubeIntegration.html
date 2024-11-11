@@ -1,0 +1,27 @@
+<template>
+    <lightning-card variant="Narrow" title="YouTube Search" icon-name="standard:video">
+        <div class="slds-p-left_xx-large">
+            <div class="slds-size_1-of-2">
+                <lightning-input type="text" variant="standard" name="Search" label="Search" placeholder="Type here..." onchange={handleChange}></lightning-input>
+            </div>
+            <div class="slds-p-top_medium">
+
+                <lightning-button variant="brand" label="Search" title="Search" onclick={handleClick}></lightning-button>
+            </div>
+        </div>
+        <template if:true={videos}>
+            <template for:each={videos} for:item="video">
+                <div key={video.id}>
+                    <div class="slds-p-left_xx-large">
+                        <p><strong>Title:</strong> {video.title}</p>
+                        <p><strong>Description:</strong> {video.description}</p>
+                        <p><strong>URL:</strong> <a href={video.url} target="_blank">{video.url}</a></p>
+                        <p><strong>Publish Time:</strong> {video.publishTime}</p>
+                        <img src={video.thumbnailUrl} alt="Thumbnail Image">
+                        <hr />
+                    </div>
+                </div>
+            </template>
+        </template>
+    </lightning-card>
+</template>
